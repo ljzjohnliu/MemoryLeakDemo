@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FindBugsFilter>
+    <!-- The equals(Object o) method shouldn't make any assumptions about the type of o. It should simply return false if o is not the same type as this. -->
+    <Match>
+        <Bug pattern="BC_EQUALS_METHOD_SHOULD_WORK_FOR_ALL_OBJECTS" />
+    </Match>
+    <!-- instanceof会一直返回true -->
+    <Match>
+        <Bug pattern="BC_VACUOUS_INSTANCEOF" />
+    </Match>
+    <!-- 不兼容的位掩码 -->
+    <Match>
+        <Bug pattern="BIT_AND" />
+    </Match>
+    <!-- A boxed value is unboxed and then immediately reboxed. -->
+    <Match>
+        <Bug pattern="BX_UNBOXING_IMMEDIATELY_REBOXED" />
+    </Match>
+    <!-- 在两个分支中使用了相同的代码 -->
+    <Match>
+        <Bug pattern="DB_DUPLICATE_BRANCHES" />
+    </Match>
+    <!-- 多线程错误 - 可能对属性进行了双重检测 -->
+    <Match>
+        <Bug pattern="DC_DOUBLECHECK" />
+        <Priority value="3" />
+    </Match>
+    <!-- 未用的局部变量 -->
+    <Match>
+        <Bug pattern="DLS_DEAD_LOCAL_STORE" />
+        <Priority value="2" />
+    </Match>
+    <!-- 调用了数组的toString -->
+    <Match>
+        <Bug pattern="DMI_INVOKING_TOSTRING_ON_ARRAY" />
+    </Match>
+    <!-- 数组越界错误 -->
+    <Match>
+        <Bug pattern="RANGE_ARRAY_INDEX" />
+    </Match>
+    <Match>
+        <Bug pattern="RANGE_ARRAY_LENGTH" />
+    </Match>
+    <Match>
+        <Bug pattern="RANGE_ARRAY_OFFSET" />
+    </Match>
+    <Match>
+        <Bug pattern="RANGE_STRING_INDEX" />
+    </Match>
+    <!-- A boxed primitive is created from a String, just to extract the unboxed primitive value. It is more efficient to just call the static parseXXX method. -->
+    <Match>
+        <Bug pattern="DM_BOXED_PRIMITIVE_FOR_PARSING" />
+    </Match>
+    <!-- 比较字符串参数使用了 == 或 != -->
+    <Match>
+        <Bug pattern="ES_COMPARING_PARAMETER_STRING_WITH_EQ" />
+    </Match>
+    <!-- ES_COMPARING_STRINGS_WITH_EQ -->
+    <Match>
+        <Bug pattern="ES_COMPARING_STRINGS_WITH_EQ" />
+    </Match>
+    <!-- EQ_ALWAYS_FALSE -->
+    <Match>
+        <Bug pattern="EQ_ALWAYS_FALSE" />
+    </Match>
+    <!-- 测试浮点数相等 -->
+    <Match>
+        <Bug pattern="FE_FLOATING_POINT_EQUALITY" />
+        <Priority value="1" />
+    </Match>
+    <!-- 泛型参数与方法参数没有相互关系 -->
+    <Match>
+        <Bug pattern="GC_UNRELATED_TYPES" />
+        <Priority value="1" />
+    </Match>
+    <!-- HE_EQUALS_USE_HASHCODE -->
+    <Match>
+        <Bug pattern="HE_EQUALS_USE_HASHCODE" />
+    </Match>
+    <!--  int转换成double，然后传递给Math.ceil -->
+    <Match>
+        <Bug pattern="ICAST_INT_CAST_TO_DOUBLE_PASSED_TO_CEIL" />
+    </Match>
+    <!-- 明显的无限循环 -->
+    <Match>
+        <Bug pattern="IL_INFINITE_LOOP" />
+    </Match>
+    <!-- 错误的对static属性进行了延迟初始化 -->
+    <Match>
+        <Bug pattern="LI_LAZY_INIT_STATIC" />
+    </Match>
+    <!-- 方法的异常路径中引用了空指针 -->
+    <Match>
+        <Bug pattern="NP_ALWAYS_NULL" />
+    </Match>
+    <!-- 加载了已知的null值 -->
+    <Match>
+        <Bug pattern="NP_LOAD_OF_KNOWN_NULL_VALUE" />
+        <Priority value="2" />
+    </Match>
+    <!-- NP_NULL_ON_SOME_PATH -->
+    <Match>
+        <Bug pattern="NP_NULL_ON_SOME_PATH" />
+    </Match>
+    <!--  潜在危险使用非短跳出逻辑 -->
+    <Match>
+        <Bug pattern="NS_DANGEROUS_NON_SHORT_CIRCUIT" />
+    </Match>
+    <!-- 方法可能因为checked exception导致清理流或资源失败 -->
+    <Match>
+        <Bug pattern="OBL_UNSATISFIED_OBLIGATION_EXCEPTION_EDGE" />
+    </Match>
+    <!-- OBL_UNSATISFIED_OBLIGATION -->
+    <Match>
+        <Bug pattern="OBL_UNSATISFIED_OBLIGATION" />
+    </Match>
+    <!-- 方法可能在关闭流时失败 -->
+    <Match>
+        <Bug pattern="OS_OPEN_STREAM" />
+    </Match>
+    <!-- 对一个已知不是null的值重复进行空值判断 -->
+    <Match>
+        <Bug pattern="RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE" />
+        <Priority value="2" />
+    </Match>
+    <!-- 已知的null值被重复的检测 -->
+    <Match>
+        <Bug pattern="RCN_REDUNDANT_NULLCHECK_OF_NULL_VALUE" />
+        <Priority value="2" />
+    </Match>
+    <!-- 对一个已经使用的值进行了null检测 -->
+    <Match>
+        <Bug pattern="RCN_REDUNDANT_NULLCHECK_WOULD_HAVE_BEEN_A_NPE" />
+    </Match>
+    <!-- 捕获了没有抛出的异常 -->
+    <Match>
+        <Bug pattern="REC_CATCH_EXCEPTION" />
+        <Priority value="2" />
+    </Match>
+    <!-- 重复判断条件 -->
+    <Match>
+        <Bug pattern="RpC_REPEATED_CONDITIONAL_TEST" />
+        <Priority value="2" />
+    </Match>
+    <!-- 属性自身赋值 -->
+    <Match>
+        <Bug pattern="SA_FIELD_SELF_ASSIGNMENT" />
+    </Match>
+    <!-- 自己和自己的值比较 -->
+    <Match>
+        <Bug pattern="SA_LOCAL_SELF_COMPARISON" />
+    </Match>
+    <!-- 方法在循环中使用+进行字符串拼接 -->
+    <Match>
+        <Bug pattern="SBSC_USE_STRINGBUFFER_CONCATENATION" />
+    </Match>
+    <!-- Switch语句中一个case失败以后进入了下一个case -->
+    <Match>
+        <Bug pattern="SF_SWITCH_FALLTHROUGH" />
+    </Match>
+    <!-- 由于switch语句导致的无用存储 -->
+    <Match>
+        <Bug pattern="SF_DEAD_STORE_DUE_TO_SWITCH_FALLTHROUGH" />
+    </Match>
+    <!-- Useless non-empty void method -->
+    <Match>
+        <Bug pattern="UC_USELESS_VOID_METHOD" />
+        <Priority value="1" />
+    </Match>
+    <!-- UC_USELESS_CONDITION -->
+    <Match>
+        <Bug pattern="UC_USELESS_CONDITION" />
+    </Match>
+    <!-- UC_USELESS_OBJECT -->
+    <Match>
+        <Bug pattern="UC_USELESS_OBJECT" />
+    </Match>
+    <!-- 格式化字符串引用的参数丢失 -->
+    <Match>
+        <Bug pattern="VA_FORMAT_STRING_MISSING_ARGUMENT" />
+    </Match>
+    <!-- keySet迭代是低效的，使用entrySet代替 -->
+    <Match>
+        <Bug pattern="WMI_WRONG_MAP_ITERATOR" />
+    </Match>
+
+</FindBugsFilter>

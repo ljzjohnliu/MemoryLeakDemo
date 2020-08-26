@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE module PUBLIC
+    "-//Puppy Crawl//DTD Check Configuration 1.3//EN"
+    "http://www.puppycrawl.com/dtds/configuration_1_3.dtd">
+
+<!--
+    This configuration file was written by the eclipse-cs plugin configuration editor
+--><!--
+    Checkstyle-Configuration: ppdai_loanapp_java_code_checkstyle
+    Description: none
+-->
+<module name="Checker">
+    <property name="charset" value="UTF-8" />
+    <property name="severity" value="warning" />
+    <module name="Translation" />
+
+    <!-- Checks for Size Violations. -->
+    <!-- See http://checkstyle.sf.net/config_sizes.html -->
+    <!-- 设置文件罪大行数-->
+    <module name="FileLength">
+        <property name="max" value="2500" />
+    </module>
+
+    <!-- See http://checkstyle.sf.net/config_whitespace.html -->
+    <!-- 检查空白是否使用tab键-->
+    <module name="FileTabCharacter" />
+
+    <!-- Miscellaneous other checks. -->
+    <!-- See 1-->
+    <module name="RegexpSingleline">
+        <property name="format" value="\s+$" />
+        <property name="minimum" value="0" />
+        <property name="maximum" value="2" />
+        <property name="message" value="Line has trailing spaces." />
+    </module>
+
+    <!-- 检查空白是否使用tab键-->
+    <module name="SuppressionCommentFilter" />
+    <module name="TreeWalker">
+        <property name="tabWidth" value="4" />
+        <module name="FileContentsHolder" />
+        <module name="SuppressWarningsHolder" />
+        <!-- Checks for Naming Conventions. -->
+        <!-- See http://checkstyle.sf.net/config_naming.html -->
+        <!-- 检查变量命名规范 默认字符集 ^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$ -->
+        <module name="ConstantName" />
+        <module name="LocalFinalVariableName" />
+        <module name="LocalVariableName">
+            <!-- 小写字母开头，只接收下划线大小写字母和数字的字符串 -->
+            <property name="format" value="^[a-z]([_a-zA-Z0-9]+)*$" />
+        </module>
+        <module name="MemberName">
+            <!-- 小写字母开头，只接收下划线大小写字母和数字的字符串 -->
+            <property name="format" value="^[a-z]([_a-zA-Z0-9]+)*$" />
+        </module>
+        <module name="MethodName">
+            <!-- 小写字母开头，只接收下划线大小写字母和数字的字符串 -->
+            <property name="format" value="^[a-z]([_a-zA-Z0-9]+)*$" />
+        </module>
+        <module name="PackageName" />
+        <module name="ParameterName">
+            <!-- 小写字母开头，只接收下划线大小写字母和数字的字符串 -->
+            <property name="format" value="^[a-z]([_a-zA-Z0-9]+)*$" />
+        </module>
+        <module name="StaticVariableName">
+            <!-- 字母开头，只接收下划线大小写字母和数字的字符串 -->
+            <property name="format" value="^[a-zA-Z]([_a-zA-Z0-9]+)*$" />
+        </module>
+        <module name="TypeName">
+            <!-- 大写字母开头，只接收下划线大小写字母和数字的字符串 -->
+            <property name="format" value="^[A-Z][_a-zA-Z0-9]*$" />
+        </module>
+
+
+        <!-- 检查import 无用的 在错误的import -->
+        <module name="AvoidStarImport" />
+        <module name="IllegalImport" /> <!-- defaults to sun.* packages -->
+        <module name="UnusedImports">
+            <property name="processJavadoc" value="true" />
+        </module>
+
+
+        <!-- Checks for whitespace -->
+        <!-- See http://checkstyle.sf.net/config_whitespace.html -->
+        <!-- 空的Iterator后是否有空白 默认没有 -->
+        <module name="EmptyForIteratorPad" />
+        <!-- 操作符左右是否空白 默认有空白 -->
+        <module name="GenericWhitespace" />
+        <!-- 方法名后跟圆括号必须在同一行，不然报错，除非定义了允许分行;另外同一行他们之间无空格 -->
+        <module name="MethodParamPad" />
+        <!-- 检查加加 减减 正负号 点 数组声明 叹号后空格 默认没有空格  -->
+        <module name="NoWhitespaceAfter" />
+        <!-- 检查加加 减减 正负号 逗号 分号前空格 默认没有空格 -->
+        <module name="NoWhitespaceBefore" />
+        <!-- 检查在运算符上换行策略 -->
+        <module name="OperatorWrap" />
+        <!-- 检查左括号后 右括号前 空格 默认没有空格 -->
+        <module name="ParenPad" />
+        <!-- 强制类型转换 括号与类型 之间没有空格-->
+        <module name="TypecastParenPad" />
+        <!-- 检查逗号 分号 强制类型转换括号 for do while后空格 默认有空格 -->
+        <module name="WhitespaceAfter" />
+        <!-- 空的构造函数 函数 类 枚举 接口 循环体 前后需要有空格 -->
+        <module name="WhitespaceAround" />
+
+
+        <!-- Modifier Checks -->
+        <!-- See http://checkstyle.sf.net/config_modifiers.html -->
+        <!-- 检查修饰符的顺序，默认是 public,protected,private,abstract,static,final,transient,volatile,synchronized,native -->
+        <module name="ModifierOrder" />
+        <!-- 检查是否有多余的修饰符，例如：接口中的方法不必使用public、abstract修饰 -->
+        <module name="RedundantModifier" />
+
+
+        <!-- See http://checkstyle.sf.net/config_blocks.html -->
+        <!-- 检查是否有嵌套的代码块 allowInSwitchCase: 定义是否允许switch case中使用嵌套的代码块 默认不允许-->
+        <module name="AvoidNestedBlocks" />
+        <!-- 检查是否有空代码块 -->
+        <module name="EmptyBlock" />
+        <!-- 检查左大括号'{'显示位置， 在同一行显示 -->
+        <module name="LeftCurly" />
+        <!-- 检查是否应该使用括号的地方没有加括号 do if else for while -->
+        <module name="NeedBraces" />
+        <!-- 检查右大括号是否单独一行显示 -->
+        <module name="RightCurly" />
+
+
+        <!-- Checks for common coding problems -->
+        <!-- See http://checkstyle.sf.net/config_coding.html -->
+        <!-- 检测空语句（独立“;”分号） -->
+        <module name="EmptyStatement" />
+        <!-- 检查是否覆写equals或者hashCode方法 -->
+        <module name="EqualsHashCode" />
+        <!-- 检查工厂方法地方是否单例合法 -->
+        <module name="IllegalInstantiation" />
+        <!-- 检查子表达式中的赋值 例如：String s = Integer.toString(i = 2) -->
+        <module name="InnerAssignment" />
+        <!-- 检查是否有boolean使用冗余的地方，例如：b || true, !false -->
+        <module name="SimplifyBooleanExpression" />
+        <!-- 检查是否在返回boolean值时是否有使用冗余的地方，例如：
+        if(valid())
+           return true;
+        else
+           return false;
+           应该改为：
+           return valid(); -->
+        <module name="SimplifyBooleanReturn" />
+
+        <!-- See http://checkstyle.sf.net/config_design.html -->
+        <!-- 只有私有构造器的类必须声明为final -->
+        <module name="FinalClass" />
+        <!-- 只定义了静态方法的类不应该定义一个公有的构造器 -->
+        <module name="HideUtilityClassConstructor" />
+        <!-- 检查变量是否对外部可见
+        packageAllowed: 变量包内成员可以访问
+        protectedAllowed: 变量是受保护的
+        publicMemberPattern: 可以公开访问的变量所匹配的命名形式 -->
+        <module name="VisibilityModifier">
+            <property name="packageAllowed" value="true" />
+            <property name="protectedAllowed" value="true" />
+        </module>
+
+
+        <!-- Miscellaneous other checks. -->
+        <!-- See http://checkstyle.sf.net/config_misc.html -->
+        <!-- 检查再定义数组时，采用java风格还是c风格，例如：int[] num是java风格，int num[]是c风格
+        javaStyle: 定义是否采用java风格定义数组
+        默认是 javaStyle-->
+        <module name="ArrayTypeStyle" />
+        <!-- 检查初始化长整型变量时，数字後是加了大写字母'L'而不是小写字母'l' -->
+        <module name="UpperEll" />
+        <!--<module name="Indentation">
+            <property name="tabWidth" value="4" />
+            <property name="basicOffset" value="4" />
+
+        </module>-->
+
+        <!-- 确保一个类有package声明 -->
+        <module name="PackageDeclaration" />
+        <!-- 一个方法中最多有10个return -->
+        <module name="ReturnCount">
+            <property name="max" value="10" />
+            <property name="format" value="^$" />
+        </module>
+
+        <!-- clone方法必须调用了super.clone() -->
+        <module name="SuperClone" />
+        <!-- finalize 必须调用了super.finalize() -->
+        <module name="SuperFinalize" />
+        <!-- try最多被嵌套2层 -->
+        <module name="NestedTryDepth">
+            <property name="max" value="2" />
+        </module>
+        <!-- if最多嵌套3层 -->
+        <module name="NestedIfDepth">
+            <property name="max" value="3" />
+        </module>
+        <!-- String的比较不能用!= 和 == -->
+        <module name="StringLiteralEquality" />
+        <!-- 每行不超过120个字 -->
+        <module name="LineLength">
+            <property name="max" value="120" />
+        </module>
+    </module>
+</module>

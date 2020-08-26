@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Custom ruleset"
+    xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
+    xsi:noNamespaceSchemaLocation="http://pmd.sf.net/ruleset_xml_schema.xsd"
+    xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 http://pmd.sourceforge.net/ruleset_2_0_0.xsd">
+    <description>
+        This ruleset checks my code for bad stuff
+    </description>
+
+    <!--https://pmd.github.io/pmd-5.6.1/pmd-java/index.html-->
+
+    <exclude-pattern>.*/R.java</exclude-pattern>
+    <exclude-pattern>.*/gen/.*</exclude-pattern>
+    <exclude-pattern>.*Dagger*.*</exclude-pattern>
+
+    <!-- See https://pmd.github.io/pmd-5.6.1/pmd-java/rules/index.html#Basic -->
+    <!-- Basic 包含每人都必须遵守的代码最佳实践，如EmptyCatchBlock -->
+    <rule ref="rulesets/java/basic.xml">
+        <exclude name="CollapsibleIfStatements" />
+    </rule>
+    <!-- These rules deal with the Android SDK, mostly related to best practices.To get better results,
+    make sure that the auxclasspath is defined for type resolution to work.
+    Such as: Super should be called at the start of the method
+    Use Environment.getExternalStorageDirectory() instead of “/sdcard”-->
+    <rule ref="rulesets/java/android.xml" />
+    <!-- Clone 克隆实现的规则，如是否有super.clone() -->
+    <rule ref="rulesets/java/clone.xml" />
+    <!-- Finalizers 使用finalizers时需遵循的规则，如FinalizeOnlyCallsSuperFinalize -->
+    <rule ref="rulesets/java/finalizers.xml" />
+    <!-- Import Statements 和import有关的规则，如DuplicateImports重复import -->
+    <rule ref="rulesets/java/imports.xml">
+        <!-- Espresso is designed this way !-->
+        <exclude name="TooManyStaticImports" />
+    </rule>
+    <rule ref="rulesets/java/logging-java.xml">
+        <exclude name="AvoidPrintStackTrace" />
+    </rule>
+    <!-- Braces 关于条件分支的规则，如IfStmtsMustUseBraces -->
+    <rule ref="rulesets/java/braces.xml" />
+
+    <!-- 关于strings规则集 -->
+    <rule ref="rulesets/java/strings.xml">
+        <exclude name="InsufficientStringBufferDeclaration" />
+        <exclude name="AvoidDuplicateLiterals" />
+    </rule>
+
+    <!-- Naming 和命名有关的规则，名称太短或太长，命名的约定等 -->
+    <rule ref="rulesets/java/naming.xml">
+        <exclude name="AbstractNaming" />
+        <exclude name="ShortClassName" />
+        <exclude name="LongVariable" />
+        <exclude name="ShortMethodName" />
+        <exclude name="ShortVariable" />
+        <exclude name="VariableNamingConventions" />
+        <exclude name="MethodNamingConventions" />
+        <exclude name="MisleadingVariableName" />
+        <exclude name="AvoidFieldNameMatchingMethodName" />
+    </rule>
+</ruleset>

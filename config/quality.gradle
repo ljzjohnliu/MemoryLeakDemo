@@ -1,0 +1,122 @@
+apply plugin: 'checkstyle'
+apply plugin: 'findbugs'
+apply plugin: 'pmd'
+
+//check.dependsOn 'checkstyle', 'findbugs', 'pmd', 'lint'
+
+def configDir = "${project.rootDir}/config/quality"
+def reportsDir = "${project.buildDir}/reports"
+
+checkstyle {
+    //工具版本
+    toolVersion '6.5'
+    //配置文件路径
+    configFile file('../config/quality/checkstyle/checkstyle.xml')
+    //filter路径
+    configProperties.checkstyleSuppressionFilterPath = file(
+            "${project.rootDir}/config/quality/checkstyle/suppressions.xml")
+            .absolutePath
+}
+
+task checkstyle(type: Checkstyle, group: 'verification') {
+    //检测代码路径
+    source 'src/main/java'
+    include '**/*.java'
+    //排除项
+    exclude '**/gen/**'
+    exclude '**/test/**'
+    exclude '**/androidTest/**'
+    exclude '**/R.java'
+    exclude '**/BuildConfig.java'
+
+    def configProps = ['proj.module.dir': projectDir.absolutePath]
+    configProperties configProps
+
+    // empty classpath
+    classpath = files()
+    reports {
+        xml.enabled = true
+        html.enabled = true
+        xml {
+             file("$project.buildDir/reports/checkstyle/checkstyle-result.xml")
+        }
+        html {
+             file("$project.buildDir/reports/checkstyle/checkstyle-result.html")
+        }
+    }
+}
+
+findbugs {
+    //工具版本
+    toolVersion = "3.0.1"
+    //忽略失败，如果检测到bug，task会执行失败，这里设置true会让task继续执行
+    ignoreFailures = true
+    //分析等级：min  default   max
+    effort = "max"
+    //检测bug的等级：low  medium  high
+    reportLevel = "low"
+    //exclude Filter路径
+    excludeFilter file('../config/quality/findbugs/findbugs-exclude.xml')
+    //include Filter路径
+    includeFilter file('../config/quality/findbugs/findbugs-include.xml')
+}
+
+task findbugs(type: FindBugs, group: 'verification') {
+    description 'Run findbugs'
+    //检测二进制文件路径
+//    classes = files("${project.rootDir}/${project.getName()}/build/intermediates/classes")
+//    classes = files("${project.buildDir}/intermediates/classes")
+    classes = files("${project.projectDir}/build/intermediates/javac")
+//    source 'src'
+    source = fileTree('src/main/java/')
+    //匹配检测的文件名
+    include '**/*.java'
+    exclude '**/gen/**'
+    classpath = files()
+    reports {
+        xml.enabled = false
+        html.enabled = true
+        //配置检查报告输出路径
+        xml {
+             file("${project.rootDir}/${project.getName()}/build/reports/findbugs/findbugs.xml")
+        }
+        html {
+             file("${project.rootDir}/${project.getName()}/build/reports/findbugs/findbugs.html")
+        }
+    }
+}
+
+task pmd(type: Pmd) {
+    //忽略失败，如果设置为false，检测出bug会停止task
+    ignoreFailures = true
+    //filter路径
+    ruleSetFiles = files("$configDir/pmd/pmd-ruleset.xml")
+    ruleSets = []
+    //检测资源路径
+    source 'src/main/java'
+    include '**/*.java'
+    //排除项
+    exclude '**/gen/**'
+
+    reports {
+        xml.enabled = true
+        html.enabled = true
+        xml {
+             file("$reportsDir/pmd/pmd.xml")
+        }
+        html {
+             file("$reportsDir/pmd/pmd.html")
+        }
+    }
+}
+
+android {
+    lintOptions {
+        abortOnError false
+        xmlReport false
+        htmlReport true
+        lintConfig file("$configDir/lint/lint.xml")
+        htmlOutput file("$reportsDir/lint/lint-result.html")
+        xmlOutput file("$reportsDir/lint/lint-result.xml")
+    }
+}
