@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.test_ref_btn).setOnClickListener(this);
         findViewById(R.id.async_btn).setOnClickListener(this);
         findViewById(R.id.handle_btn).setOnClickListener(this);
+        findViewById(R.id.thread_btn).setOnClickListener(this);
     }
 
     @Override
@@ -40,16 +41,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 intent.setClassName("com.ljz.leak", "com.ljz.leak.activity.LeakTestActivity1");
                 break;
             case R.id.static_ref_btn:
-                intent.setComponent(new ComponentName("com.ljz.leak", "com.ljz.leak.activity.StaticReferenceActivity"));
+                intent.setComponent(new ComponentName("com.ljz.leak", "com.ljz.leak.activity.StaticReferenceLeakActivity"));
                 break;
             case R.id.test_ref_btn:
-                Log.d(TAG, "onClick: sInstance = " + StaticReferenceActivity.sInstance);
+                Log.d(TAG, "onClick: sInstance = " + StaticReferenceLeakActivity.sInstance);
                 break;
             case R.id.async_btn:
-                intent.setComponent(new ComponentName("com.ljz.leak", "com.ljz.leak.activity.AsyncTaskActivity"));
+                intent.setComponent(new ComponentName("com.ljz.leak", "com.ljz.leak.activity.AsyncTaskLeakActivity"));
                 break;
             case R.id.handle_btn:
-                intent.setComponent(new ComponentName("com.ljz.leak", "com.ljz.leak.activity.HandleActivity"));
+                intent.setComponent(new ComponentName("com.ljz.leak", "com.ljz.leak.activity.HandleLeakActivity"));
+                break;
+            case R.id.thread_btn:
+                intent.setComponent(new ComponentName("com.ljz.leak", "com.ljz.leak.activity.ThreadLeakActivity"));
                 break;
             default:
                 ToastUtil.toast(mContext, "没有有效的跳转页面");

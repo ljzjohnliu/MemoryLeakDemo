@@ -11,7 +11,7 @@ import com.ljz.leak.R;
 
 import java.lang.ref.WeakReference;
 
-public class HandleActivity extends AppCompatActivity {
+public class HandleLeakActivity extends AppCompatActivity {
 
     /**
      * 用过内部类创建的Handler对象，持有Activity的引用。

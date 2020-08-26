@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.ljz.leak.R;
 
-public class AsyncTaskActivity extends AppCompatActivity {
+public class AsyncTaskLeakActivity extends AppCompatActivity {
 
     private AsyncTask mAsyncTask;
 

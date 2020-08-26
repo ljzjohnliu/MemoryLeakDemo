@@ -22,9 +22,10 @@
         </activity>
 
         <activity android:name=".activity.LeakTestActivity1" />
-        <activity android:name=".activity.StaticReferenceActivity" />
-        <activity android:name=".activity.AsyncTaskActivity" />
-        <activity android:name=".activity.HandleActivity" />
+        <activity android:name=".activity.StaticReferenceLeakActivity" />
+        <activity android:name=".activity.AsyncTaskLeakActivity" />
+        <activity android:name=".activity.HandleLeakActivity" />
+        <activity android:name=".activity.ThreadLeakActivity" />
 
     </application>
 

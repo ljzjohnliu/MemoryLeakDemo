@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.ljz.leak.R;
 
-public class StaticReferenceActivity extends AppCompatActivity {
+public class StaticReferenceLeakActivity extends AppCompatActivity {
 
     public static Activity sInstance;
 
