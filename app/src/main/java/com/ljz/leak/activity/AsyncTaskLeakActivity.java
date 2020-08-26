@@ -29,8 +29,8 @@ public class AsyncTaskLeakActivity extends AppCompatActivity {
         mAsyncTask = new AsyncTask() {
             @Override
             protected Object doInBackground(Object[] objects) {
-                while (true){
-                    if(isCancelled()){
+                while (true) {
+                    if (isCancelled()) {
                         break;
                     }
                 }
@@ -44,7 +44,7 @@ public class AsyncTaskLeakActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         //改进后的代码，可解决内存泄漏问题
-        if(null != mAsyncTask && !mAsyncTask.isCancelled()){
+        if (null != mAsyncTask && !mAsyncTask.isCancelled()) {
             mAsyncTask.cancel(true);
         }
         mAsyncTask = null;

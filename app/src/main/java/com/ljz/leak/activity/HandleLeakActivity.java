@@ -32,7 +32,6 @@ public class HandleLeakActivity extends AppCompatActivity {
     //
 
     /**
-     *
      * 解决方案二：采用弱引用的形式 静态内部类
      * 思路就是不适用非静态内部类，继承Handler时，要么是放在单独的类文件中，要么就是使用静态内部类。
      * 因为静态的内部类不会持有外部类的引用，所以不会导致外部类实例的内存泄露。
@@ -41,18 +40,19 @@ public class HandleLeakActivity extends AppCompatActivity {
      * 注意：一个静态的匿名内部类实例不会持有外部类的引用。
      * 修改后不会导致内存泄露的代码如下
      */
-    public static class MyHandler extends Handler{
+    public static class MyHandler extends Handler {
         private WeakReference<Activity> mActivity;
-        public MyHandler(WeakReference<Activity> activityWeakReference){
+
+        public MyHandler(WeakReference<Activity> activityWeakReference) {
             mActivity = activityWeakReference;
         }
 
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            if(null != mActivity){
+            if (null != mActivity) {
                 Activity activity = mActivity.get();
-                if(null != activity && !activity.isFinishing()){
+                if (null != activity && !activity.isFinishing()) {
                     //TODO do something...
                 }
             }

@@ -23,7 +23,8 @@ public class StaticReferenceLeakActivity extends AppCompatActivity {
         super.onDestroy();
         /**
          * 静态引用 会导致内存泄漏
-         * 比如这个例子中代码，定义了sInstance来传递和使用，会导致StaticReferenceActivity无法被销毁，这是一种比较低级的错误，一般我们不建议这么使用，如果一定要使用，就需要在最后将sInstance置空。
+         * 比如这个例子中代码，定义了sInstance来传递和使用，会导致StaticReferenceActivity无法被销毁，这是一种比较低级的错误，
+         * 一般我们不建议这么使用，如果一定要使用，就需要在最后将sInstance置空。
          *
          */
         sInstance = null;

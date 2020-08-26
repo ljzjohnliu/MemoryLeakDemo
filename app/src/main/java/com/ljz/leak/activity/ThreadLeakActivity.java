@@ -15,12 +15,12 @@ public class ThreadLeakActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_static_reference);
 
-        mThread = new Thread(){
+        mThread = new Thread() {
             @Override
             public void run() {
                 super.run();
-                while (true){
-
+                while (true) {
+                    //todo
                 }
             }
         };

@@ -64,6 +64,7 @@ findbugs {
 task findbugs(type: FindBugs, group: 'verification') {
     description 'Run findbugs'
     //检测二进制文件路径
+    //必须要先编译生成二进制文件后再用findbugs命令 gradle3.2之前之后编译的二进制文件路径不同
 //    classes = files("${project.rootDir}/${project.getName()}/build/intermediates/classes")
 //    classes = files("${project.buildDir}/intermediates/classes")
     classes = files("${project.projectDir}/build/intermediates/javac")
