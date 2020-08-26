@@ -28,4 +28,15 @@
 interrupt()和Thread.interrupt()的区别:
 其中interrupt()是作用于调用线程的，比如我们上面调用的，他是作用于mThread这个线程的，如果我们在上面使用Thread.interrupt()那么就是作用于主线程的。
 
-
+## WebView造成的内存泄漏
+   WebView在解析网页时，会申请Native堆内存，保存页面元素（图片、history等）
+   
+## 其他原因
+   BraodcastReceiver
+   ContentObserver
+   File
+   Cursor
+   Stream
+   Bitmap
+   Timer
+   
