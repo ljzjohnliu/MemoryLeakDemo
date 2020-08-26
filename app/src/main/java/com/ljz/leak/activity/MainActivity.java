@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.inner_btn).setOnClickListener(this);
         findViewById(R.id.static_ref_btn).setOnClickListener(this);
         findViewById(R.id.test_ref_btn).setOnClickListener(this);
-        findViewById(R.id.retrofit_btn).setOnClickListener(this);
+        findViewById(R.id.async_btn).setOnClickListener(this);
         findViewById(R.id.test_action).setOnClickListener(this);
     }
 
@@ -45,8 +45,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.test_ref_btn:
                 Log.d(TAG, "onClick: sInstance = " + StaticReferenceActivity.sInstance);
                 break;
-            case R.id.retrofit_btn:
-                intent.setComponent(new ComponentName("com.ljz.leak", "com.ljz.leak.activity.RetrofitActivity"));
+            case R.id.async_btn:
+                intent.setComponent(new ComponentName("com.ljz.leak", "com.ljz.leak.activity.AsyncTaskActivity"));
                 break;
 //            case R.id.test_action:
 //                break;

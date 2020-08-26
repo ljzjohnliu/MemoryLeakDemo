@@ -23,6 +23,7 @@
 
         <activity android:name=".activity.LeakTestActivity1" />
         <activity android:name=".activity.StaticReferenceActivity" />
+        <activity android:name=".activity.AsyncTaskActivity" />
 
     </application>
 
