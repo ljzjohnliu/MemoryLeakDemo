@@ -24,6 +24,8 @@
 注意：一个静态的匿名内部类实例不会持有外部类的引用。 
 
 ## Thread引起的内存泄漏
-
+如何解决,无非就是在Activity销毁的时候去暂停Thread那么我们应该怎么做呢?
+interrupt()和Thread.interrupt()的区别:
+其中interrupt()是作用于调用线程的，比如我们上面调用的，他是作用于mThread这个线程的，如果我们在上面使用Thread.interrupt()那么就是作用于主线程的。
 
 

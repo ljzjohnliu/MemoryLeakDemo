@@ -30,5 +30,11 @@ public class ThreadLeakActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        if(null != mThread){
+            //interrupt()和Thread.interrupt()的区别
+            //其中interrupt()是作用于调用线程的，比如我们下面调用的，他是作用于mThread这个线程的
+            //如果我们在下面使用Thread.interrupt()那么就是作用于主线程的。
+            mThread.interrupt();
+        }
     }
 }
