@@ -13,7 +13,7 @@
          />
 
     <Button
-        android:id="@+id/simple_btn"
+        android:id="@+id/inner_btn"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:textAllCaps="false"
@@ -22,21 +22,21 @@
         />
 
     <Button
-        android:id="@+id/map_btn"
+        android:id="@+id/static_ref_btn"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:textAllCaps="false"
         android:layout_gravity="center_horizontal"
-        android:text="RxJava的Map用法"
+        android:text="打开StaticReferenceActivity"
         />
 
     <Button
-        android:id="@+id/scheduler_btn"
+        android:id="@+id/test_ref_btn"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:textAllCaps="false"
         android:layout_gravity="center_horizontal"
-        android:text="Scheduler线程控制"
+        android:text="测试静态引用"
         />
 
     <Button
