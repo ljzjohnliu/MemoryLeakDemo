@@ -54,6 +54,7 @@ public class LeakTestActivity1 extends AppCompatActivity {
          * 非static内部类的实例
          */
         MyClass myClass2 = new MyClass("This is a inner calss");
+        myClass2.toString();
         testBtn.setOnClickListener(clickListener);
     }
 
