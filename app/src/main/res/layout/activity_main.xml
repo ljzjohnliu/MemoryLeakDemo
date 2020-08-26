@@ -45,16 +45,16 @@
         android:layout_height="wrap_content"
         android:textAllCaps="false"
         android:layout_gravity="center_horizontal"
-        android:text="Android Retrofit详解"
+        android:text="AsyncTask造成的内存泄漏"
         />
 
     <Button
-        android:id="@+id/test_action"
+        android:id="@+id/handle_btn"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:textAllCaps="false"
         android:layout_gravity="center_horizontal"
-        android:text="RxJava的用法3"
+        android:text="Handle造成的内存泄漏"
         />
 
 </LinearLayout>

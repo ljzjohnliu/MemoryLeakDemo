@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.static_ref_btn).setOnClickListener(this);
         findViewById(R.id.test_ref_btn).setOnClickListener(this);
         findViewById(R.id.async_btn).setOnClickListener(this);
-        findViewById(R.id.test_action).setOnClickListener(this);
+        findViewById(R.id.handle_btn).setOnClickListener(this);
     }
 
     @Override
@@ -48,8 +48,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.async_btn:
                 intent.setComponent(new ComponentName("com.ljz.leak", "com.ljz.leak.activity.AsyncTaskActivity"));
                 break;
-//            case R.id.test_action:
-//                break;
+            case R.id.handle_btn:
+                intent.setComponent(new ComponentName("com.ljz.leak", "com.ljz.leak.activity.HandleActivity"));
+                break;
             default:
                 ToastUtil.toast(mContext, "没有有效的跳转页面");
                 return;
