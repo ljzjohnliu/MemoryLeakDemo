@@ -48,5 +48,3 @@
 }
 
 #继承bean不被混淆
--keep class com.ljz.leak.net.model.**{*;}
--keep class com.ljz.leak.data.**{*;}

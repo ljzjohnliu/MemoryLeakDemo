@@ -4,6 +4,8 @@ import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
 
+import com.squareup.leakcanary.LeakCanary;
+
 import java.util.List;
 
 public class MyApplication extends Application {
@@ -19,6 +21,10 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         mApp = this;
+        if (LeakCanary.isInAnalyzerProcess(this)) {
+            return;
+        }
+        LeakCanary.install(this);
     }
 
     public static Application getApp() {
