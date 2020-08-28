@@ -10,7 +10,7 @@ gradle_compile_release()
     mkdir -p out/apk
     cp app/build/outputs/apk/release/*.apk out/apk/MemoryLeakDemo-release.apk
     adb install -r out/apk/MemoryLeakDemo-release.apk
-    adb shell am start -n com.ljz.rxjava/com.ljz.rxjava.activity.MainActivity
+    adb shell am start -n com.ljz.leak/com.ljz.leak.activity.MainActivity
     echo "build release end!"
 }
 
@@ -24,7 +24,7 @@ gradle_compile_debug()
     mkdir -p out/apk
     cp app/build/outputs/apk/debug/*.apk out/apk/MemoryLeakDemo-debug.apk
     adb install -r out/apk/MemoryLeakDemo-debug.apk
-    adb shell am start -n com.ljz.rxjava/com.ljz.rxjava.activity.MainActivity
+    adb shell am start -n com.ljz.leak/com.ljz.leak.activity.MainActivity
     echo "build debug end!"
 }
 
